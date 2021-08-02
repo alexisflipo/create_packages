@@ -16,10 +16,11 @@ def create_architecture(project_name = 'project_unamed'):
     os.system(f"touch {project_name}/pkg_{project_name}/preprocessing.py")
     os.system(f"touch {project_name}/README.md")
     os.system(f"touch {project_name}/Makefile")
+    os.system(f"touch {project_name}/Dockerfile")
     os.system(f"touch {project_name}/requirements.txt")
     os.system(f"touch {project_name}/setup.py")
     os.system(f"mkdir {project_name}/api")
-    os.system(f"touch {project_name}/api/fast.py")
+    os.system(f"touch {project_name}/api/main.py")
     os.system(f"mkdir {project_name}/notebooks")
     os.system(f"mkdir {project_name}/scripts")
     os.system(f"touch {project_name}/scripts/script_{project_name}")
@@ -32,7 +33,7 @@ def create_architecture(project_name = 'project_unamed'):
     # close file
 
 project_name = sys.argv[1]
-file_path = f"{project_name}/pkg_{project_name}/get_data.py"
+#file_path = f"{project_name}/pkg_{project_name}/get_data.py"
 
 # setup
 # Makefile (remplira le requirements)
@@ -40,7 +41,7 @@ file_content = {
       "requirements":
     {
         "file_path": f"{project_name}/requirements.txt", # pwd ?
-        "file_text": "pandas \nseaborn"
+        "file_text": "fastapi \nuvicorn \ndocker \ngunicorn"
     },
 
     "setup":
@@ -73,6 +74,35 @@ setup(
 install_requirements:
 \t@pip install -r requirements.txt"""
     },
+    "fastapi":
+    {
+        "file_path": f"{project_name}/api/main.py", 
+        "file_text": 
+"""from typing import Optional
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: Optional[str] = None):
+    return {"item_id": item_id, "q": q}"""
+    },
+    "dockerfile":
+    {
+        "file_path": f"{project_name}/Dockerfile", 
+        "file_text": 
+"""FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+
+COPY ./api /api
+"""
+    }
     
 }
 
@@ -83,8 +113,6 @@ def write_to_file():
             current_file.write(file_content[file]["file_text"])
     
 
-
-    
 create_architecture(project_name = sys.argv[1])
 write_to_file()
 

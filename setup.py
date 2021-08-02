@@ -5,4 +5,7 @@ setup(
     version='0.0.1',
     packages=['create_pkg'],
     scripts=["scripts/create_pkg"],
+        install_requires=[
+          'uvicorn','gunicorn','fastapi'
+      ]
 )
