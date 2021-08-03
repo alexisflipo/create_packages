@@ -8,7 +8,7 @@
 
 `pip install .`
 
-## Sortir du repo
+## Sortez du repo et choisissez l'emplacement de votre choix
 
 **Remplacer nom_du_dossier par le nom de votre choix**
 
