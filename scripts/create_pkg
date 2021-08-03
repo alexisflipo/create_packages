@@ -7,36 +7,20 @@ import stat
 
 
 def create_architecture(project_name = 'project_unamed'): 
+    folders = [f"pkg_{project_name}","api","notebooks","scripts"]
+    files = [f"pkg_{project_name}/__init__.py", f"pkg_{project_name}/get_data.py", 
+    f"pkg_{project_name}/model.py",f"pkg_{project_name}/pipeline.py",f"pkg_{project_name}/preprocessing.py",
+     "README.md","Makefile","Dockerfile","requirements.txt","setup.py","api/main.py",f"scripts/script_{project_name}"]
+    
     os.system(f"mkdir {project_name}")
-    os.system(f"mkdir {project_name}/pkg_{project_name}")
-    os.system(f"touch {project_name}/pkg_{project_name}/__init__.py")
-    os.system(f"touch {project_name}/pkg_{project_name}/get_data.py")
-    os.system(f"touch {project_name}/pkg_{project_name}/model.py")
-    os.system(f"touch {project_name}/pkg_{project_name}/pipeline.py")
-    os.system(f"touch {project_name}/pkg_{project_name}/preprocessing.py")
-    os.system(f"touch {project_name}/README.md")
-    os.system(f"touch {project_name}/Makefile")
-    os.system(f"touch {project_name}/Dockerfile")
-    os.system(f"touch {project_name}/requirements.txt")
-    os.system(f"touch {project_name}/setup.py")
-    os.system(f"mkdir {project_name}/api")
-    os.system(f"touch {project_name}/api/main.py")
-    os.system(f"mkdir {project_name}/notebooks")
-    os.system(f"mkdir {project_name}/scripts")
-    os.system(f"touch {project_name}/scripts/script_{project_name}")
-
-# write on a file :
-    # 2 params : file_path // what I want to write
-    # open file ==> get file path, then open it
-    # write on it
-    # save changes
-    # close file
+    
+    for folder in folders:
+        os.system(f"mkdir {project_name}/{folder}")
+    for file in files:
+        os.system(f"touch {project_name}/{file}")
 
 project_name = sys.argv[1]
-#file_path = f"{project_name}/pkg_{project_name}/get_data.py"
 
-# setup
-# Makefile (remplira le requirements)
 file_content = {
       "requirements":
     {
