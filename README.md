@@ -1,4 +1,7 @@
-# INSTRUCTIONS
+# INSTRUCTIONS 
+
+## Création d'une architecture Python avec FastAPI & Docker
+
 ## Cloner le repo 
 `git clone https://github.com/alexisflipo/create_packages.git`
 
