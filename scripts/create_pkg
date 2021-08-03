@@ -10,7 +10,7 @@ def create_architecture(project_name = 'project_unamed'):
     folders = [f"pkg_{project_name}","api","notebooks","scripts"]
     files = [f"pkg_{project_name}/__init__.py", f"pkg_{project_name}/get_data.py", 
     f"pkg_{project_name}/model.py",f"pkg_{project_name}/pipeline.py",f"pkg_{project_name}/preprocessing.py",
-     "README.md","Makefile","Dockerfile","requirements.txt","setup.py","api/main.py",f"scripts/script_{project_name}"]
+     "README.md","Makefile","Dockerfile","requirements.txt","setup.py","api/main.py",f"scripts/script_{project_name}",".gitignore"]
     
     os.system(f"mkdir {project_name}")
     
